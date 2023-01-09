@@ -1,0 +1,47 @@
+syntax = "proto3";
+
+package calculator;
+
+option go_package = "calculatorpb/calculatorpb";
+
+service CalculatorService {
+
+    rpc SquareRoot(SquareRootRequest) returns (SquareRootResponse) {}
+    rpc PerfectNumber(PerfectNumberRequest) returns (stream PerfectNumberResponse) {}
+    rpc TotalNumber(stream TotalNumberRequest) returns (TotalNumberResponse) {}
+    rpc FindMinimum(stream FindMinimumRequest) returns (stream FindMinimumResponse) {}
+
+}
+
+message SquareRootRequest {
+    float first_number = 1; 
+}
+
+message SquareRootResponse {
+    float sqrt_result = 1;
+}
+
+message PerfectNumberRequest {
+    int64 number = 1;
+}
+
+message PerfectNumberResponse {
+    int64 sum_of_dividers = 1;
+    bool is_perferct = 2;
+}
+
+message TotalNumberRequest {
+    int64 number = 1;
+}
+
+message TotalNumberResponse {
+    int64 sum = 1;
+}
+
+message FindMinimumRequest {
+    int32 number = 1;
+}
+
+message FindMinimumResponse {
+    int32 minimum = 1;
+}
